@@ -26,7 +26,7 @@ c_auc = [100, 40.176, 24.8578, 12.6945, 4.8027, 0.81316, 0.074];
 subplot(1,2,1),plot(T,qt), title("Quantita nel compartimento"), 
 xlabel("Tempo (ore)"), ylabel("Quantita (mg)"), grid on;
 subplot(1,2,2), plot(T,ct), hold on, plot(t_auc,c_auc,'o'), hold off, title("Concentrazione nel compartimento"),
-xlabel("Tempo (ore)"), ylabel("Concentrazione (mg/L)"), grid on;
+legend("Concentrazione","Misurazioni"), xlabel("Tempo (ore)"), ylabel("Concentrazione (mg/L)"), grid on;
 
 % Grafico della concentrazione in scale logaritmica
 figure(2);
