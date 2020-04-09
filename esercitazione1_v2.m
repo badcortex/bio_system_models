@@ -21,9 +21,11 @@ sys = ss(A,B,C,D);
 figure(1);
 t = [0:0.01:10];
 [ct,T,qt] = impulse(sys,t);
-subplot(1,2,1), plot(T,qt), title("Quantita nel compartimento"), 
+t_auc = [0, 0.76, 1.16, 1.72, 2.53, 4.01, 6];
+c_auc = [100, 40.176, 24.8578, 12.6945, 4.8027, 0.81316, 0.074];
+subplot(1,2,1),plot(T,qt), title("Quantita nel compartimento"), 
 xlabel("Tempo (ore)"), ylabel("Quantita (mg)"), grid on;
-subplot(1,2,2), plot(T,ct), title("Concentrazione nel compartimento"),
+subplot(1,2,2), plot(T,ct), hold on, plot(t_auc,c_auc,'o'), hold off, title("Concentrazione nel compartimento"),
 xlabel("Tempo (ore)"), ylabel("Concentrazione (mg/L)"), grid on;
 
 % Grafico della concentrazione in scale logaritmica
@@ -51,10 +53,7 @@ auc1_2 = trapz(T,ct);
 
 % MRT - Tempo medio di residenza 
 % Uso l'approccio non compartimentale calcolando AUMC e AUC con
-% campionamento
-t_auc = [0, 0.76, 1.16, 1.72, 2.53, 4.01, 6];
-c_auc = [100, 40.176, 24.8578, 12.6945, 4.8027, 0.81316, 0.074]; 
-
+% campionamento 
 auc1_nc = trapz(t_auc,c_auc);
 aumc1_nc = trapz(t_auc,t_auc.*c_auc);
 
